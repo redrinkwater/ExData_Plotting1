@@ -1,0 +1,6 @@
+data<- read.table("household_power_consumption.txt", sep=";", skip=66637, nrows = 2880)
+data$V1<-paste(data$V1, data$V2)
+data$V1<- strptime(data$V1, format = '%d/%m/%Y %H:%M:%S')
+png(filename='plot1.png', width = 480, height = 480, units = 'px')
+hist(data$V3, col='red', main='Global Active Power', xlab='Global Active Power (kilowatts)', ylab='Frequency', ylim=c(0,1200))
+dev.off()
